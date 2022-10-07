@@ -1,0 +1,45 @@
+<%- include('templates/header')-%>
+
+    <h1>Detail Berita</h1>
+    <br>
+    
+            <img style="width: 20%;" src="/images/<%=berita.gambar%>" alt="<%=berita.gambar%>">
+            <!-- <p class="card-text">gambar: <%=berita.gambar%></p>        -->
+            <h2><%=berita.nama%></h2>
+            <h6 class="card-subtitle mb-2 text-muted">berita Id: <%=berita.id%></h6>
+            <p class="card-text">isi: <%=berita.isi%></p>
+           <br>
+           
+           <h5 class="card-text">Komen Netizen</h5>
+        
+
+           <%komentar.forEach(function(item){%>
+            <tr>               
+                <td>
+                    <i><p class="card-text"><%=item.komentar%></p></i>
+                </td>
+            </tr>
+            <%});%>
+
+           <br>
+
+
+
+
+            <form method="POST" action="/komen/">
+
+                    <input hidden type="number" class="form-control" value="<%=berita.id%>" name="id_berita">
+                <div class="mb-3">
+                    <!-- <label for="nama" class="form-label">Komentar</label> -->
+                    <input type="text" class="form-control" name="komentar" id="komentar" placeholder="Wah sangat menarik">
+                    <!-- <textarea id="isi"class="form-control"  name="komentar" rows="4" cols="50" placeholder="Wah sangat menarik"></textarea> -->
+                </div>
+                <button type="submit" class="btn btn-success">Komen</button> 
+            </form>
+            <br>
+            <br>
+            <div>
+                <a href="/berita" class="btn btn-danger">Kembali</a>
+                
+            </div>
+            <%- include('templates/footer')-%>

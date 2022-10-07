@@ -1,0 +1,39 @@
+<%- include('templates/header')-%>
+
+    <h1>Daftar Berita Harian</h1>
+    <br>
+    <div>
+        <a href="/addberita" class="btn btn-outline-info">
+            Tambahkan Berita</a>
+            </div>
+        <div>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nama Berita</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%berita.forEach(function(item){%>
+                    <tr>
+                        <th scope="row">
+                            <%=item.id%>
+                        </th>
+                        <td>
+                            <%=item.nama%>
+                        </td>
+                       
+                        <td>
+                            <a href="/beritadetail?id=<%=item.id%>" class="btn btn-outline-info">Baca disini</a>
+                            &nbsp;
+                            <a href="/editberita/<%=item.id%>" class="btn btn-outline-info">Edit</a>
+                        </td>
+                    </tr>
+                    <%});%>
+            </tbody>
+        </table>
+    </div>
+
+    <%- include('templates/footer')-%>
